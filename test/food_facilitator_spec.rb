@@ -7,12 +7,9 @@ describe FoodFacilitator do
     @mock_communicator = Minitest::Mock.new
   end
 
-  it "can ask where a user wants to eat" do
-    @mock_communicator.expect(:inquire, "Tyler's", [/Tyler/])
+  it "supplies a question and ballot box to communicator to collect votes" do
+    @mock_communicator.expect(:inquire, "Tyler's", [/Tyler/, BallotBox])
     FoodFacilitator.new(@mock_communicator).start
     @mock_communicator.verify
-  end
-
-  it "can hear where a user wants to eat" do
   end
 end

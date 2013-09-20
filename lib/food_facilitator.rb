@@ -11,11 +11,15 @@ class FoodFacilitator
   def start
     question =<<-EOS
       Where would you like to eat? \
-      How about #{RESTAURANTS.join(', ')}? Pleas pick a number.
+      How about #{RESTAURANTS.join(', ')}? Please pick a number.
     EOS
-    @communicator.inquire(question)
+    answer = @communicator.inquire(question, BallotBox.new)
   end
 
   private
   attr_reader :communicator
+end
+
+class BallotBox
+
 end
